@@ -1,0 +1,10 @@
+1. Run the command "pip install -r requirements.txt"
+2. Open programming.ipynb in jupyter notebooks or jupyter lab
+3. Run all cells to produce the pyplot graph showcasing the cumulative reward sum for all methods. Averages of each method are drawn in solid lines and correspond to the plot legend while individual sub runs are shown in dotted lines.
+4. To run individual methods, such as only running interactive mode or only running random mode, run the following functions in a new cell.
+    - run_interactive()
+    - run_random()
+    - run_better()
+    - run_worse()
+    
+    Note that these functions return 2D lists (10x10,000) of the comulative reward at each step for each run. 
