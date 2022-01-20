@@ -8,3 +8,5 @@
     - run_worse()
     
     Note that these functions return 2D lists (10x10,000) of the comulative reward at each step for each run. 
+
+To view the notebook already run with the plot show, visit my GitHub @ https://github.com/garrett-partenza-us/reinforcement-learning/blob/main/ex0/programming.ipynb
