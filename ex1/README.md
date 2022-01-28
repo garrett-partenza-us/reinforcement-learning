@@ -1,10 +1,22 @@
-1. Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using ε-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 0, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = −1, A2 = 2, R2 = 1, A3 = 2, R3 = −2, A4 = 2, R4 = 2, A5 = 3, R5 = 0. On some of these time steps the ε case may have occurred, causing an action to be selected at random. On which time steps did this definitely occur? On which time steps could this possibly have occurred?
+*1. Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using ε-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 0, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = −1, A2 = 2, R2 = 1, A3 = 2, R3 = −2, A4 = 2, R4 = 2, A5 = 3, R5 = 0. On some of these time steps the ε case may have occurred, causing an action to be selected at random. On which time steps did this definitely occur? On which time steps could this possibly have occurred?*
 
-* a T1 → A1 = 1, R1 = −1 → A1 = -1, A2 = 0, A3 = 0, A4 = 0
-* b T2 → A2 = 2, R2 = 1 → A1 = -1, A2 = 1, A3 = 0, A4 = 0
-* c T3 → A3 = 2, R3 = −2 → A1 = -1, A2 = -1/2, A3 = 0, A4 = 0
-* d T4 → A4 = 2, R4 = 2 → A1 = 1, A2 = 1/3, A3 = 0, A4 = 0 (definitely occured)
-* e T5 → A5 = 3, R5 = 0 → A1 = 1, A2 = 1/3, A3 = 0, A4 = 0 (definitely occured)
+* T1 → A1 = 1, R1 = −1 → A1 = -1, A2 = 0, A3 = 0, A4 = 0
+* T2 → A2 = 2, R2 = 1 → A1 = -1, A2 = 1, A3 = 0, A4 = 0
+* T3 → A3 = 2, R3 = −2 → A1 = -1, A2 = -1/2, A3 = 0, A4 = 0
+* T4 → A4 = 2, R4 = 2 → A1 = 1, A2 = 1/3, A3 = 0, A4 = 0 (definitely occured)
+* T5 → A5 = 3, R5 = 0 → A1 = 1, A2 = 1/3, A3 = 0, A4 = 0 (definitely occured)
 
 Timesteps four and five definitely had the epsilon case occur since it chose an action with a sample-average action-value estimate lower than the maximum. In terms of time steps that epsilon possibly could have occured, all time steps are possible, because random choice includes the maximum sample-average action-value choice, and thus even moves that look opitmal may have been random.
+
+*2. If the step-size parameters, αn, are not constant, then the estimate Qn is a weighted average of previously received rewards with a weighting different from that given by Equation 2.6. What is the weighting on each prior reward for the general case, analogous to Equation 2.6, in terms of the sequence of step-size parameters?*
+
+\begin{equation}
+\begin{split}
+Q_{n + 1} & = Q_n + \alpha_n [R_n - Q_n] \\
+ & = (1 - \alpha_n)Q_n + \alpha_n R_n \\
+ & = (1 - \alpha_n)\Big((1 - \alpha_{n - 1})Q_{n-1} + \alpha_{n-1} R_{n-1}\Big) + \alpha_n R_n \\
+ & = (1 - \alpha_n)(1 - \alpha_{n - 1})Q_{n-1} + (1 - \alpha_n)\alpha_{n-1}R_{n-1} + \alpha_n R_n \\
+ & = Q_1 \prod_i^n(1-\alpha_i) + \sum_i^n \Bigg(\alpha_i R_i \prod_{j=i}^{n - 1} (1 - \alpha_j)\Bigg)
+\end{split} 
+\end{equation}
 
