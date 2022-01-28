@@ -10,4 +10,4 @@ Timesteps four and five definitely had the epsilon case occur since it chose an 
 
 *2. If the step-size parameters, αn, are not constant, then the estimate Qn is a weighted average of previously received rewards with a weighting different from that given by Equation 2.6. What is the weighting on each prior reward for the general case, analogous to Equation 2.6, in terms of the sequence of step-size parameters?*
 
-$x + y$
+![](https://latex.codecogs.com/svg.image?Q_{n&plus;1}&space;=&space;\alpha&space;_n&space;\cdot&space;[R_n&space;-&space;Q_n])
